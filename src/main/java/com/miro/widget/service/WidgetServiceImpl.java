@@ -9,11 +9,9 @@ import com.miro.widget.transform.WidgetDomainToDtoConverter;
 import com.miro.widget.transform.WidgetDtoToDomainConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -33,17 +31,17 @@ public class WidgetServiceImpl implements WidgetService {
 
     @Override
     public WidgetDto create(WidgetDto dto) {
-        Widget widget = dtoToDomain.convert(dto, null);
+        Widget widget = dtoToDomain.apply(dto);
 
         Widget persisted = repository.persist(widget);
-        return domainToDto.convert(persisted, null);
+        return domainToDto.apply(persisted);
     }
 
     @Override
     public WidgetDto findById(Integer id) {
         Widget found = repository.findById(id);
         if (found != null) {
-            return domainToDto.convert(found, null);
+            return domainToDto.apply(found);
         }
 
         LOGGER.error("Widget with id [{}] not found!", id);
@@ -64,12 +62,12 @@ public class WidgetServiceImpl implements WidgetService {
             throw new WidgetNotFoundException(String.format("Widget with id %s not found!", id));
         }
 
-        BeanUtils.copyProperties(dto, toUpdate, "id", "lastModificationDate");
-        toUpdate.setLastModificationDate(LocalDateTime.now());
+        Widget newWidget = dtoToDomain.apply(dto, "id");
+        newWidget.setId(toUpdate.getId());
 
-        Widget persisted = repository.persist(toUpdate);
+        Widget persisted = repository.persist(newWidget);
 
-        return domainToDto.convert(persisted, null);
+        return domainToDto.apply(persisted);
     }
 
     @Override

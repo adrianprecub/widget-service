@@ -5,6 +5,7 @@ import com.miro.widget.util.AtomicSequenceGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -45,6 +46,7 @@ public class InMemoryWidgetRepository implements Repository<Widget> {
         if (entity.getZ() == null) {
             entity.setZ(foreground.incrementAndGet());
         }
+        entity.setLastModificationDate(LocalDateTime.now());
         Widget persisted = null;
         try {
             semaphore.acquire();

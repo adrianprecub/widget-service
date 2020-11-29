@@ -155,10 +155,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <surefireArgLine></surefireArgLine>
-                <failsafeArgLine></failsafeArgLine>
-            </properties>
         </profile>
         <profile>
             <id>jacoco</id>

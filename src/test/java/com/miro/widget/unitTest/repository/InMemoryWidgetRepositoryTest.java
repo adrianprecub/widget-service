@@ -1,13 +1,15 @@
-package com.miro.widget.repository;
+package com.miro.widget.unitTest.repository;
 
 import com.miro.widget.domain.Widget;
+import com.miro.widget.repository.InMemoryWidgetRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 
 public class InMemoryWidgetRepositoryTest {
     private final InMemoryWidgetRepository repository = new InMemoryWidgetRepository();

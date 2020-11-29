@@ -1,7 +1,8 @@
-package com.miro.widget.transform;
+package com.miro.widget.unitTest.transform;
 
 import com.miro.widget.domain.Widget;
 import com.miro.widget.dto.WidgetDto;
+import com.miro.widget.transform.WidgetDtoToDomainConverter;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

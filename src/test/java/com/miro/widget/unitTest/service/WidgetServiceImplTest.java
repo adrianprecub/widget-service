@@ -1,10 +1,11 @@
-package com.miro.widget.service;
+package com.miro.widget.unitTest.service;
 
 import com.miro.widget.domain.Widget;
 import com.miro.widget.dto.WidgetDto;
 import com.miro.widget.exception.WidgetNotFoundException;
 import com.miro.widget.repository.InMemoryWidgetRepository;
 import com.miro.widget.repository.Repository;
+import com.miro.widget.service.WidgetServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
