@@ -1,0 +1,12 @@
+target
+*.iml
+
+.idea
+logs
+
+.project
+.classpath
+.settings/
+*.swp
+.flattened-pom.xml
+src/main/resources/application-local.yml
