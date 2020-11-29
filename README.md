@@ -40,7 +40,8 @@ Configuration and logging can be of course externalized using another yml proper
 
 ## Code Coverage
 Jacoco is used to do code coverage analysis.
-There is a maven profile that can be used to trigger this analysis
+There is a maven profile that can be used to trigger testing and analysis. 
+Otherwise, tests will NOT be run.
 
 ```mvn clean verify -Pjacoco```
 

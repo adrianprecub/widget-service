@@ -29,8 +29,8 @@ public class InMemoryWidgetRepositoryTest {
     void testCreateWithoutZ() {
         Widget one = createWidget(100,100, null, 100, 100);
         Widget two = createWidget(200,200, null, 200, 200);
-        Widget persistedOne = repository.persist(one);
-        Widget persistedTwo = repository.persist(two);
+        repository.persist(one);
+        repository.persist(two);
 
         List<Widget> result = repository.findAll();
         Widget first = result.get(0);

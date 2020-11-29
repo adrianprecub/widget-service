@@ -15,7 +15,7 @@ public class SmokeTestIT {
     private WidgetController controller;
 
     @Test
-    public void contextLoads() throws Exception {
+    public void contextLoads() {
         assertNotNull(controller);
     }
 

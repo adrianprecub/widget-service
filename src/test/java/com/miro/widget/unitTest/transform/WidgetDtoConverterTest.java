@@ -19,7 +19,7 @@ public class WidgetDtoConverterTest {
         Widget domain = new Widget();
         domain.setX(1);
 
-        WidgetDto convert = dtoConverter.convert(domain, null);
+        WidgetDto convert = dtoConverter.apply(domain);
         assertNotNull(convert);
         assertEquals(1, convert.getX());
         assertNotNull(convert.getLastModificationDate());

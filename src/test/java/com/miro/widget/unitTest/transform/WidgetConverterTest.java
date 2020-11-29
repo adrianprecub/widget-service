@@ -18,7 +18,7 @@ public class WidgetConverterTest {
     void testDtoToDomainConvert() {
         WidgetDto dto = new WidgetDto();
         dto.setX(1);
-        Widget convert = converter.convert(dto, null);
+        Widget convert = converter.apply(dto);
         assertNotNull(convert);
         assertEquals(1, convert.getX());
     }

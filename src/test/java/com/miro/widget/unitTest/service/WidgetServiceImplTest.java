@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class WidgetServiceImplTest {
 
     private WidgetServiceImpl service;
-    Repository<Widget> repository = new InMemoryWidgetRepository();
+    final Repository<Widget> repository = new InMemoryWidgetRepository();
 
     @BeforeEach
     void setUp() {
@@ -50,9 +50,7 @@ class WidgetServiceImplTest {
 
     @Test
     void testUpdate_IdNotFound() {
-        assertThrows(WidgetNotFoundException.class, () -> {
-            service.update(1,new WidgetDto());
-        });
+        assertThrows(WidgetNotFoundException.class, () -> service.update(1,new WidgetDto()));
     }
 
     @Test
@@ -67,9 +65,7 @@ class WidgetServiceImplTest {
 
     @Test
     void testFindById_NotFound() {
-        assertThrows(WidgetNotFoundException.class, () -> {
-            service.findById(1);
-        });
+        assertThrows(WidgetNotFoundException.class, () -> service.findById(1));
     }
 
     @Test
@@ -91,9 +87,7 @@ class WidgetServiceImplTest {
 
     @Test
     void testDeleteById_IdNotExists() {
-        assertThrows(WidgetNotFoundException.class, () -> {
-            service.deleteById(1);
-        });
+        assertThrows(WidgetNotFoundException.class, () -> service.deleteById(1));
     }
 
     private WidgetDto getTestWidgetDto() {
