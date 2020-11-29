@@ -40,13 +40,7 @@ public class InMemoryWidgetRepository implements Repository<Widget> {
 
     @Override
     public Widget persist(Widget entity) {
-        if (entity.getId() == null) {
-            entity.setId(AtomicSequenceGenerator.getNext());
-        }
-        if (entity.getZ() == null) {
-            entity.setZ(foreground.incrementAndGet());
-        }
-        entity.setLastModificationDate(LocalDateTime.now());
+        updateEntityWithRequiredFields(entity);
         Widget persisted = null;
         try {
             semaphore.acquire();
@@ -64,6 +58,16 @@ public class InMemoryWidgetRepository implements Repository<Widget> {
         }
 
         return persisted;
+    }
+
+    private void updateEntityWithRequiredFields(Widget entity) {
+        if (entity.getId() == null) {
+            entity.setId(AtomicSequenceGenerator.getNext());
+        }
+        if (entity.getZ() == null) {
+            entity.setZ(foreground.incrementAndGet());
+        }
+        entity.setLastModificationDate(LocalDateTime.now());
     }
 
     private void updateStorage(Widget persisted) {
