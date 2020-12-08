@@ -6,6 +6,8 @@ import com.miro.widget.exception.WidgetNotFoundException;
 import com.miro.widget.repository.InMemoryWidgetRepository;
 import com.miro.widget.repository.Repository;
 import com.miro.widget.service.WidgetServiceImpl;
+import com.miro.widget.transform.WidgetDomainToDtoConverter;
+import com.miro.widget.transform.WidgetDtoToDomainConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +21,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class WidgetServiceImplTest {
 
     private WidgetServiceImpl service;
-    final Repository<Widget> repository = new InMemoryWidgetRepository();
+    private final Repository<Widget> repository = new InMemoryWidgetRepository();
+    private final WidgetDtoToDomainConverter dtoToDomain = new WidgetDtoToDomainConverter();
+    private final WidgetDomainToDtoConverter domainToDto = new WidgetDomainToDtoConverter();
 
     @BeforeEach
     void setUp() {
-        service = new WidgetServiceImpl(repository);
+        service = new WidgetServiceImpl(repository, dtoToDomain, domainToDto);
     }
 
     @Test

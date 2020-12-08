@@ -3,7 +3,9 @@ package com.miro.widget.transform;
 import com.miro.widget.domain.Widget;
 import com.miro.widget.dto.WidgetDto;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WidgetDtoToDomainConverter implements GenericConverter<WidgetDto, String[], Widget> {
 
     //TODO enhance converter to use existing domain object

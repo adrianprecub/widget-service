@@ -23,10 +23,12 @@ public class WidgetServiceImpl implements WidgetService {
     private final WidgetDomainToDtoConverter domainToDto;
 
     @Autowired
-    public WidgetServiceImpl(Repository<Widget> repository) {
+    public WidgetServiceImpl(Repository<Widget> repository,
+                             WidgetDtoToDomainConverter dtoToDomain,
+                             WidgetDomainToDtoConverter domainToDto) {
         this.repository = repository;
-        this.dtoToDomain = new WidgetDtoToDomainConverter();
-        this.domainToDto = new WidgetDomainToDtoConverter();
+        this.dtoToDomain = dtoToDomain;
+        this.domainToDto = domainToDto;
     }
 
     @Override
